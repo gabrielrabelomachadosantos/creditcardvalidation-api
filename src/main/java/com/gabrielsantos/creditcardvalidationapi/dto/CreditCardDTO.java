@@ -17,8 +17,6 @@ public class CreditCardDTO {
 
     private Long expiringDateInMillis;
 
-    private int cvv;
-
     @JsonIgnore
     private CreditCardIssuer creditCardIssuer;
 

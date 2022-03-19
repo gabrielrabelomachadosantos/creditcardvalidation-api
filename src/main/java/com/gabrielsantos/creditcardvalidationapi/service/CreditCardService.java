@@ -29,10 +29,6 @@ public class CreditCardService {
             throw new InvalidCreditCardException("Invalid number of digits.");
         }
 
-        if (!validateCreditCardCVV(creditCardDTO)) {
-            throw new InvalidCreditCardException("Invalid cvv.");
-        }
-
         if (!luhnAlgorithmValidation(creditCardDTO.getNumber(), creditCardDTO.getCreditCardIssuer())) {
             throw new InvalidCreditCardException("Invalid credit card number.");
         }
@@ -99,14 +95,6 @@ public class CreditCardService {
         }
 
         return false;
-    }
-
-    private Boolean validateCreditCardCVV(CreditCardDTO creditCardDTO) {
-        if (creditCardDTO.getCvv() == 0) {
-            throw new BadRequestException("The cvv must not be null or 0.");
-        }
-
-        return String.valueOf(creditCardDTO.getCvv()).length() == creditCardDTO.getCreditCardIssuer().getCvvNumberOfDigits();
     }
 
     private Boolean luhnAlgorithmValidation(Long creditCardNumber, CreditCardIssuer issuer) {
