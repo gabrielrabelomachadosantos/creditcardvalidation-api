@@ -87,7 +87,7 @@ public class CreditCardServiceTest {
 
         Throwable exception = assertThrows(BadRequestException.class,() ->
                 creditCardService.validateCreditCard(creditCard));
-        assertEquals("The expiringDate must not be null or 0.", exception.getMessage());
+        assertEquals("The expiringDate mst not be null or 0.", exception.getMessage());
 
         creditCard.setExpiringDateInMillis(INVALID_EXPIRING_DATE_IN_MILLIS);
 

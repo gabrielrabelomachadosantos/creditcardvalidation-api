@@ -19,7 +19,5 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: maven
-    - name: Clean Install
-      run: mvn -B clean install --file pom.xml
     - name: Build with Maven
       run: mvn -B package --file pom.xml
