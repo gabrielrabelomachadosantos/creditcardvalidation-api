@@ -17,7 +17,7 @@ public class CreditCardController {
     private final CreditCardService creditCardService;
 
     @ResponseBody
-    @GetMapping(path = "/validateCreditCard")
+    @PostMapping(path = "/validateCreditCard")
     public ResponseEntity<String> validateCreditCard(@RequestBody CreditCardDTO creditCardDTO) {
         return creditCardService.validateCreditCard(creditCardDTO);
     }
