@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.EnumSet;
 
 @Service
@@ -21,7 +22,7 @@ public class CreditCardService {
             throw new InvalidCreditCardException("Unknown issuer.");
         }
 
-        if (!validateCreditCardExpiringDate(creditCardDTO.getExpiringDateInMillis())) {
+        if (!validateCreditCardExpiringDate(creditCardDTO.getExpiringDate())) {
             throw new InvalidCreditCardException("Expired credit card.");
         }
 
@@ -79,12 +80,12 @@ public class CreditCardService {
         return null;
     }
 
-    private Boolean validateCreditCardExpiringDate(Long expiringDate) {
-        if (expiringDate == null || expiringDate == 0) {
+    private Boolean validateCreditCardExpiringDate(Date expiringDate) {
+        if (expiringDate == null) {
             throw new BadRequestException("The expiringDate must not be null or 0.");
         }
 
-        return expiringDate > System.currentTimeMillis();
+        return expiringDate.after(new Date());
     }
 
     private Boolean validateCreditCardNumberOfDigits(CreditCardDTO creditCardDTO) {

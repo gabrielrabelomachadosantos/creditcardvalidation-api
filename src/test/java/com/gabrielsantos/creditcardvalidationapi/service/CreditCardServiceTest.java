@@ -10,6 +10,8 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -20,9 +22,7 @@ public class CreditCardServiceTest {
 
     private final BuilderMethods builderMethods = new BuilderMethods();
 
-    private static final int INVALID_CVV = 6546;
-
-    private static final Long INVALID_EXPIRING_DATE_IN_MILLIS = 1262224800000L;
+    private static final Date INVALID_EXPIRING_DATE = new Date(1262224800000L);
 
     private static final Long INCOMPLETE_MASTERCARD_NUMBER = 523955152L;
 
@@ -66,13 +66,13 @@ public class CreditCardServiceTest {
     @DisplayName("Credit card expiring date validation error")
     void creditCardExpiringDateValidationError() {
         var creditCard = builderMethods.buildCreditCardDTO();
-        creditCard.setExpiringDateInMillis(null);
+        creditCard.setExpiringDate(null);
 
         Throwable exception = assertThrows(BadRequestException.class,() ->
                 creditCardService.validateCreditCard(creditCard));
         assertEquals("The expiringDate must not be null or 0.", exception.getMessage());
 
-        creditCard.setExpiringDateInMillis(INVALID_EXPIRING_DATE_IN_MILLIS);
+        creditCard.setExpiringDate(INVALID_EXPIRING_DATE);
 
         exception = assertThrows(InvalidCreditCardException.class,() ->
                 creditCardService.validateCreditCard(creditCard));
