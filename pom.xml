@@ -75,7 +75,7 @@
     </dependencies>
 
     <build>
-        <finalName>app</finalName>
+        <finalName>credit-card-validation-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
