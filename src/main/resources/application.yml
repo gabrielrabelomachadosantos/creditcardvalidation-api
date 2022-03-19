@@ -28,6 +28,7 @@ server:
     context-path: /creditcardvalidation
   error:
     include-stacktrace: never
+    include-message: always
 
 jasypt:
   encryptor:
