@@ -63,23 +63,6 @@ public class CreditCardServiceTest {
     }
 
     @Test
-    @DisplayName("Credit card cvv validation error")
-    void creditCardCvvValidationError() {
-        var creditCard = builderMethods.buildCreditCardDTO();
-        creditCard.setCvv(0);
-
-        Throwable exception = assertThrows(BadRequestException.class,() ->
-                creditCardService.validateCreditCard(creditCard));
-        assertEquals("The cvv must not be null or 0.", exception.getMessage());
-
-        creditCard.setCvv(INVALID_CVV);
-
-        exception = assertThrows(InvalidCreditCardException.class,() ->
-                creditCardService.validateCreditCard(creditCard));
-        assertEquals("Invalid credit card. Invalid cvv.", exception.getMessage());
-    }
-
-    @Test
     @DisplayName("Credit card expiring date validation error")
     void creditCardExpiringDateValidationError() {
         var creditCard = builderMethods.buildCreditCardDTO();
