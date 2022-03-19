@@ -23,6 +23,6 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: surefire-reports
-        path: /home/runner/work/creditcardvalidation-api/creditcardvalidation-api/target/surefire-reports
+        path: /home/app/target/surefire-reports
     - name: Build with Maven
       run: mvn -B package --file pom.xml
