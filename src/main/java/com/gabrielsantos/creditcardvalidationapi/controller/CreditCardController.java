@@ -3,6 +3,7 @@ package com.gabrielsantos.creditcardvalidationapi.controller;
 import com.gabrielsantos.creditcardvalidationapi.dto.CreditCardDTO;
 import com.gabrielsantos.creditcardvalidationapi.service.CreditCardService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +19,14 @@ public class CreditCardController {
 
     @ResponseBody
     @PostMapping(path = "/validateCreditCard")
+    @ApiOperation(value = "Validate credit card.")
     public ResponseEntity<String> validateCreditCard(@RequestBody CreditCardDTO creditCardDTO) {
         return creditCardService.validateCreditCard(creditCardDTO);
     }
 
     @ResponseBody
     @GetMapping(path = "/getSupportedCardIssuers")
+    @ApiOperation(value = "Get supported credit cards issuers")
     public ResponseEntity<String> getSupportedCardIssuers() {
         return creditCardService.getSupportedCardIssuers();
     }
