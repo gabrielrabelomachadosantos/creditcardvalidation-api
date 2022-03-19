@@ -20,7 +20,7 @@ public class CreditCardDTO {
     private Long number;
 
     @JsonFormat(pattern = "yyyy/MM")
-    @ApiModelProperty(required = true, example = "2025/12")
+    @ApiModelProperty(required = true, example = "yyyy/MM")
     private Date expiringDate;
 
     @JsonIgnore
