@@ -1,5 +1,6 @@
 package com.gabrielsantos.creditcardvalidationapi.dto;
 
+import com.gabrielsantos.creditcardvalidationapi.enums.Product;
 import com.gabrielsantos.creditcardvalidationapi.enums.PurchaseStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,5 +20,7 @@ public class PurchaseDTO {
     private PurchaseStatus purchaseStatus;
 
     private String buyerEmail;
+
+    private Product product;
 
 }
