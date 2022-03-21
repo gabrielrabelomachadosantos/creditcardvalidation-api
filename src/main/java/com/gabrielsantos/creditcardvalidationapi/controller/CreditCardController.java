@@ -24,9 +24,8 @@ public class CreditCardController {
         return creditCardService.validateCreditCard(creditCardDTO);
     }
 
-    @ResponseBody
     @GetMapping(path = "/getSupportedCardIssuers")
-    @ApiOperation(value = "Get supported credit cards issuers")
+    @ApiOperation(value = "Get supported credit cards issuers.")
     public ResponseEntity<String> getSupportedCardIssuers() {
         return creditCardService.getSupportedCardIssuers();
     }
