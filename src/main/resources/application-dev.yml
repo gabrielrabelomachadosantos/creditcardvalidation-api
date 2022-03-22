@@ -1,0 +1,35 @@
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    queue:
+      registered-purchase: REGISTERED_PURCHASE
+      pending-purchase: PENDING_PURCHASE_APPROVE
+      approved-purchase: APPROVED_PURCHASE
+      reproved-purchase: REPROVED_PURCHASE
+      update-purchase-status: UPDATE_PURCHASE_STATUS
+    listener:
+      simple:
+        retry:
+          max-attempts: 5
+      direct:
+        auto-startup: true
+    template:
+      retry:
+        max-attempts: 5
+
+server:
+  port: 8081
+  servlet:
+    context-path: /credit-card-validation-api
+  error:
+    include-stacktrace: never
+    include-message: always
+
+jasypt:
+  encryptor:
+    password: 123456789
