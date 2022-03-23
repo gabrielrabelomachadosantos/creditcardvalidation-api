@@ -24,11 +24,11 @@ public class CreditCardServiceTest {
 
     private static final Date INVALID_EXPIRING_DATE = new Date(1262224800000L);
 
-    private static final Long INCOMPLETE_MASTERCARD_NUMBER = 523955152L;
+    private static final String INCOMPLETE_MASTERCARD_NUMBER = "523955152";
 
-    private static final Long INVALID_MASTERCARD_NUMBER = 5239551529162748L;
+    private static final String INVALID_MASTERCARD_NUMBER = "5239551529162748";
 
-    private static final Long UNKNOWN_ISSUER_CARD_NUMBER = 9239551529162749L;
+    private static final String UNKNOWN_ISSUER_CARD_NUMBER = "9239551529162749";
 
     @Test
     @DisplayName("Credit card validation success")

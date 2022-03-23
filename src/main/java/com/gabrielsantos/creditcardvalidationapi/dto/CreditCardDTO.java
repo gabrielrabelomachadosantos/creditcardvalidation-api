@@ -17,7 +17,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class CreditCardDTO {
 
-    private Long number;
+    @ApiModelProperty(example = "9999 9999 9999 9999 or 9999999999999999")
+    private String number;
 
     @JsonFormat(pattern = "yyyy/MM")
     @ApiModelProperty(example = "yyyy/MM")

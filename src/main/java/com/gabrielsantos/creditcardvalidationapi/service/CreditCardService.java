@@ -7,6 +7,7 @@ import com.gabrielsantos.creditcardvalidationapi.exception.InvalidCreditCardExce
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,7 +17,11 @@ import java.util.EnumSet;
 public class CreditCardService {
 
     public ResponseEntity<String> validateCreditCard(CreditCardDTO creditCardDTO) {
-        creditCardDTO.setCreditCardIssuer(getCreditCardFlag(creditCardDTO.getNumber()));
+        Long convertedCreditCardNumber = convertCreditCardNumberToLong(creditCardDTO.getNumber());
+
+        creditCardDTO.setNumber(String.valueOf(convertedCreditCardNumber));
+
+        creditCardDTO.setCreditCardIssuer(getCreditCardFlag(convertedCreditCardNumber));
 
         if (creditCardDTO.getCreditCardIssuer() == null) {
             throw new InvalidCreditCardException("Unknown issuer.");
@@ -30,7 +35,7 @@ public class CreditCardService {
             throw new InvalidCreditCardException("Invalid number of digits.");
         }
 
-        if (!luhnAlgorithmValidation(creditCardDTO.getNumber(), creditCardDTO.getCreditCardIssuer())) {
+        if (!luhnAlgorithmValidation(convertedCreditCardNumber, creditCardDTO.getCreditCardIssuer())) {
             throw new InvalidCreditCardException("Invalid credit card number.");
         }
 
@@ -138,6 +143,36 @@ public class CreditCardService {
         supportedCardIssuers.deleteCharAt(0);
 
         return new ResponseEntity<>(String.valueOf(supportedCardIssuers), HttpStatus.OK);
+    }
+
+    private Long convertCreditCardNumberToLong(String creditCardNumber) {
+        if (!StringUtils.hasText(creditCardNumber)) {
+            return null;
+        }
+
+        Character whiteSpace = ' ';
+
+        String formattedNumber = "";
+
+        for (int i = 0; i < creditCardNumber.length(); i++) {
+            if (whiteSpace.equals(creditCardNumber.charAt(i)) || !characterIsANumber(creditCardNumber.charAt(i))) {
+                continue;
+            }
+
+            formattedNumber += creditCardNumber.charAt(i);
+        }
+
+        return Long.valueOf(formattedNumber);
+    }
+
+    private Boolean characterIsANumber(Character character) {
+        for (int i = 0; i < 10; i++) {
+            if (character.equals(String.valueOf(i).charAt(0))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }
