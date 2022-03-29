@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Features
+## ✅ Features
 
 A simple credit card validation api that has and 2 endpoints: 
 
@@ -16,7 +16,7 @@ A simple credit card validation api that has and 2 endpoints:
 
 This API also part of a greater implementation of other two APIs that simulate a purchase, validate and notify the user about the process.
 
-## Technologies
+## ⚒️ Technologies
 
 - Java 11
 - Spring-Boot
@@ -25,15 +25,15 @@ This API also part of a greater implementation of other two APIs that simulate a
 - JUnit
 - RabbitMQ
 
-## Host
+## ☁️ Host
 
 - AWS - Elastic Beanstalk
 
-## Links
+## 🔗 Links
 
-- Swagger Documentation:
-- My LinkedIn Profile: https://www.linkedin.com/in/gabriel-santos-20737b171
-- Related APIs: 
+- 📖 Swagger Documentation:
+- 😄 My LinkedIn Profile: https://www.linkedin.com/in/gabriel-santos-20737b171
+- 🔗 Related APIs: 
   * https://github.com/gabrielrabelomachadosantos/purchase-api
   * https://github.com/gabrielrabelomachadosantos/notifications-api
 
