@@ -14,7 +14,7 @@ A simple credit card validation api that has and 2 endpoints:
 
 - `/credit-card-validation-api/credit-card/getSupportedCardIssuers` : To get all available credit card issuers.
 
-This API also part of a greater implementation of other two APIs that simulate a purchase, validate and notify the user about the process.
+This API is also part of a greater implementation of other two APIs that simulate a purchase, validate and notify the user about the process.
 
 ## ⚒️ Technologies
 
