@@ -4,7 +4,7 @@
 
 ## ✅ Features
 
-A simple credit card validation api that has and 2 endpoints: 
+A simple credit card validation api that has 2 endpoints: 
 
 - `/credit-card-validation-api/credit-card/validateCreditCard` : To validate a credit card. You just need to send a request with the credit
   card number, that accepts both number formats, with white spaces and with
